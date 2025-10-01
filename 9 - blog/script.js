@@ -5,10 +5,10 @@
  */
 
 // 1. Je recupere le conteneur de publications
-const postsContainer = document.querySelector(".posts");
+const postsContainer_elem = document.querySelector(".posts");
 
 // 2. Voici ma base de données factise 
-const posts = 
+const posts_arr = 
 [
     {
         titre:"SEO, les bonnes pratiques",
@@ -30,11 +30,28 @@ const posts =
     }
 ];
 
-// 3. Je parcours la bdd
-posts.forEach(function(post){
-    // 4. Je créer un nouveau post dans le conteneur de post pour chaque post de la BDD
-    
-    // 5. Je l'ajoute dans le conteneur de publication
-    
+// 3. Je boucle sur ma base de données pour afficher les publications
+posts_arr.forEach(function(post){
+
+   // 4. Je crée le template de chaque publication
+    const postAdd_str = `
+         <div class="post">
+            <div class="post-titre">
+                <a href="${post.link}">${post.titre}</a> 
+            </div>
+            <div class="post-extrait">
+                ${post.extrait}
+            </div>
+            <div class="post-hashtag">
+                ${post.hashtag}
+            </div>
+        </div> 
+        `; 
+
+        // 5. J'injecte le template dans le conteneur de publications
+    postsContainer_elem.innerHTML+=postAdd_str;
 
 });
+
+
+
